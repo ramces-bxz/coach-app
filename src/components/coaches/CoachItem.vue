@@ -3,7 +3,12 @@
     <h3>{{ fullName }}</h3>
     <h4>${{ rate }}/hour</h4>
     <div>
-      <span v-for="area in areas" :key="area">{{ area }}</span>
+      <base-badge
+        v-for="area in areas"
+        :key="area"
+        :type="area"
+        :title="area"
+      ></base-badge>
     </div>
     <div class="actions">
       <router-link :to="coachContactLink">Contact</router-link>
@@ -22,7 +27,7 @@ export default {
       return this.$route.path + '/coaches/' + this.id + '/contact';
     },
     coachDetailsLink() {
-      return this.$route.path + '/coaches/' + this.id;
+      return this.$route.path + '/' + this.id;
     },
   },
 };
