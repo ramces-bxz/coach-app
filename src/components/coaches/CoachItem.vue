@@ -11,8 +11,10 @@
       ></base-badge>
     </div>
     <div class="actions">
-      <router-link :to="coachContactLink">Contact</router-link>
-      <router-link :to="coachDetailsLink">View Details</router-link>
+      <base-button :to="coachContactLink" link mode="outline"
+        >Contact</base-button
+      >
+      <base-button :to="coachDetailsLink" link>View Details</base-button>
     </div>
   </li>
 </template>

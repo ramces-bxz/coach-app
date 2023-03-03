@@ -8,12 +8,16 @@ const store = createStore({
   },
   state() {
     return {
-      userId: 'c3',
+      userId: 'c6',
+      dbUrl: 'https://coach-app-597ab-default-rtdb.firebaseio.com',
     };
   },
   getters: {
     userId(state) {
       return state.userId;
+    },
+    databaseUrl(state) {
+      return state.dbUrl;
     },
   },
 });
