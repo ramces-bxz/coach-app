@@ -16,7 +16,10 @@ export default {
       id: userId,
     }); //send to mutation
   },
-  async loadCoaches(context) {
+  async loadCoaches(context, payload) {
+    if (!payload.forceRefresh && !context.getters.shouldUpdate) {
+      return;
+    }
     const databaseUrl = context.rootGetters.databaseUrl;
     try {
       const { data: coachesData } = await axios.get(
@@ -34,8 +37,9 @@ export default {
         };
         coaches.push(coach);
       }
-      console.log(coaches);
+      // console.log(coaches);
       context.commit('setCoaches', coaches);
+      context.commit('setFetchTimestamp');
     } catch (err) {
       console.log(err.response);
       const error = new Error(err.response.data.error || 'Failed to fetch');
