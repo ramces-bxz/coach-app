@@ -6,7 +6,7 @@ export default {
     return {
       userId: null,
       token: null,
-      tokenExpiration: null,
+      didAutoLogout: false,
       dbUrl: 'https://coach-app-597ab-default-rtdb.firebaseio.com',
     };
   },

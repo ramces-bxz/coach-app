@@ -19,8 +19,9 @@ export default {
     const databaseUrl = context.rootGetters.databaseUrl;
 
     try {
+      const token = context.rootGetters.token;
       const { data: responseData } = await axios.get(
-        `${databaseUrl}/requests/${coachId}.json`
+        `${databaseUrl}/requests/${coachId}.json?auth=` + token
       );
       const requests = [];
       for (const key in responseData) {
