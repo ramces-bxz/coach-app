@@ -11,7 +11,13 @@
           <base-button mode="outline" @click="loadCoaches(true)"
             >Refresh</base-button
           >
-          <base-button v-if="!isCoach && !isLoading" to="/register" link
+          <base-button link to="/auth?redirect=register" v-if="!isAuthenticated"
+            >Login to Register as Coach</base-button
+          >
+          <base-button
+            v-if="isAuthenticated && !isCoach && !isLoading"
+            to="/register"
+            link
             >Register As Coach</base-button
           >
         </div>
@@ -77,6 +83,9 @@ export default {
     this.loadCoaches();
   },
   computed: {
+    isAuthenticated() {
+      return this.$store.getters.isAuthenticated;
+    },
     isCoach() {
       return this.$store.getters['coaches/isCoach'];
     },

@@ -10,7 +10,11 @@ export default {
       areas: data.areas,
     };
     const databaseUrl = context.rootGetters.databaseUrl;
-    await axios.put(`${databaseUrl}/coaches/${userId}.json`, coachData);
+    const token = context.rootGetters.token;
+    await axios.put(
+      `${databaseUrl}/coaches/${userId}.json?auth=` + token,
+      coachData
+    );
     context.commit('registerCoach', {
       ...coachData,
       id: userId,
